@@ -1,0 +1,63 @@
+﻿@model Project.Models.RegisterViewModel
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Register</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Register</h1>
+                                </div>
+                                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <form class="user">
+
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="submit" value="Register" class="btn btn-outline-dark mt-auto " />
+                                            &nbsp;
+                                            @Html.ActionLink("Back to Login", "Login", "Account", null, new { @class = "btn btn-outline-dark mt-auto " })
+                                        </div>
+
+                                    </form>
+                                }
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

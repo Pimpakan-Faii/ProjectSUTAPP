@@ -1,0 +1,208 @@
+﻿@model IEnumerable<Project.Coupon>
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.C_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.C_Store)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Des)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.C_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C_Store)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Des)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Coupon_Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Coupon_Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Coupon_Id })
+            </td>
+        </tr>
+    }
+
+    </table>
+*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop Homepage - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="@Url.Content("~/Content/StyleCoupon.css")" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <b><a class="navbar-brand" href="@Url.Action("Index", "Home")">SUT IN SIDE</a></b>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+
+                </ul>
+
+                <form class="d-flex">
+                    @Html.ActionLink("เพิ่มคูปอง", "Create", null, new { @class = "btn btn-success" })
+
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header-->
+    <br />
+    <header class="bg-dark-edit py-5">
+
+        <div class="container px-4 px-lg-5 my-5">
+            <!--<div class="text-center text-black">-->
+            @if (Request.IsAuthenticated)
+            {
+                <p><span class="display-4 fw-bolder">สวัสดีคุณ @User.Identity.GetUserName()</span></p>
+                <!--<p><span class="lead fw-normal text-black-50 mb-0">คะแนนสะสมของคุณ : 0 point</span></p>-->
+            }
+            else
+            {
+                <p><span class="display-4 fw-bolder">สวัสดี ยินดีต้อนรับ</span></p>
+            }
+
+
+
+        </div>
+        <!--</div>-->
+
+    </header>
+
+    
+    <section class="container">
+
+        <br />
+        <p><span style="color: white" class="display-6 fw-bolder">โปรโมชั่น</span></p>
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <div class="container px-4 px-lg-5 mt-5">
+
+            @for (var i = 1; i <= Model.ToList().Count(); i++)
+            {
+                var indexItem = i - 1;
+
+                <div class="row">
+
+                    <article class="card fl-left">
+
+                        <section class="date">
+                            <time datetime="23th feb">
+                                <span>@Model.ElementAt(indexItem).C_Store</span>
+                                <br>
+                                <span>@Model.ElementAt(indexItem).Des promotion</span>
+
+                            </time>
+                        </section>
+
+
+                        <section class="card-cont">
+                            @*<small>dj khaled</small>*@
+                            <h2><b style="color: black">@Model.ElementAt(indexItem).C_Name</b></h2>
+
+                            <div class="even-info">
+                                <i class="fa fa-map-marker"></i>
+                                <span style="color: black">
+                                    ร้านที่ใช้ได้ : @Model.ElementAt(indexItem).C_Store
+                                </span>
+                            </div>
+
+                            <div class="even-date">
+                                <i class="fa fa-calendar"></i>
+                                <time>
+                                    <span style="color: black">&nbsp; วันหมดอายุ : @Model.ElementAt(indexItem).Expire</span>
+                                    <br />
+                                    <span>
+                                        ขั้นตอน :
+                                    </span>
+                                    <span>
+                                        1. แสดงคูปองส่วนลดนี้ให้ร้านอาหารทราบ
+                                    </span>
+                                    <span>
+                                        2. แจ้งชื่อและรหัสคูปองส่วนลดนี้
+                                    </span>
+                                </time>
+                            </div>
+
+                            <br />
+
+                            <div class="pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                    @*<a class="btn btn-outline-dark mt-auto" href="@Url.Action("Index", "Details")">ดูเพิ่มเติม</a>*@
+                                    @Html.ActionLink("Details", "Details", new { id = @Model.ElementAt(indexItem).Coupon_Id }, new { @class = "btn btn-outline-dark mt-auto" })
+                                    @Html.ActionLink("Edit", "Edit", new { id = @Model.ElementAt(indexItem).Coupon_Id }, new { @class = "btn btn-warning" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = @Model.ElementAt(indexItem).Coupon_Id }, new { @class = "btn btn-danger" })
+                                </div>
+                            </div>
+
+                        </section>
+
+                    </article>
+
+                </div>
+
+            }
+        </div>
+
+    </section>
+
+
+
+
+</body>
+</html>

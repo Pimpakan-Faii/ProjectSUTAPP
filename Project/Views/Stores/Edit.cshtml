@@ -1,0 +1,147 @@
+﻿@model Project.Store
+
+@*@{
+        ViewBag.Title = "Edit";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+
+    @using (Html.BeginForm("Edit", "Stores", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h2>Edit Store</h2>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.product_id)
+
+        <div class="form-group">
+            <!--@Html.LabelFor(model => model.url, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                <p class="control-label col-md-2">อัพโหลดรูปภาพ</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.url, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                    @Html.ValidationMessageFor(model => model.url, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <!--@Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                <p class="control-label col-md-2">ชื่อร้าน</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <!--@Html.LabelFor(model => model.time, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                <p class="control-label col-md-2">เวลา เปิด-ปิด</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.time, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.time, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <!--@Html.LabelFor(model => model.Review, htmlAttributes: new { @class = "control-label col-md-2" })-->
+                <p class="control-label col-md-2">จำนวนดาวร้าน</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Review, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Review, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-outline-dark mt-auto" />
+                    &nbsp;
+                    @Html.ActionLink("Back to List", "Index", null, null, new { @class = "btn btn-outline-dark mt-auto" })
+                </div>
+            </div>
+        </div>
+    }
+*@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Edit Store</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Edit Store</h1>
+                                </div>
+                                @using (Html.BeginForm("Edit", "Stores", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.product_id)
+
+                                    <div class="form-group">
+                                        <p class="control-label col-md-2">อัพโหลดรูปภาพ</p>
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.url, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                                            @Html.ValidationMessageFor(model => model.url, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <p class="control-label col-md-2">ชื่อร้าน</p>
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <p class="control-label col-md-2">เวลา เปิด-ปิด</p>
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.time, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.time, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <p class="control-label col-md-2">จำนวนดาวร้าน</p>
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Review, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Review, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-outline-dark mt-auto " />
+                                        &nbsp;
+                                        @Html.ActionLink("Back to List", "Index", "Stores", null, new { @class = "btn btn-outline-dark mt-auto " })
+                                    </div>
+
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

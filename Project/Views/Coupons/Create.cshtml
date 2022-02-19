@@ -1,0 +1,164 @@
+﻿@model Project.Coupon
+
+@*@{
+        ViewBag.Title = "Create";
+    }
+
+    <h2>Create</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Coupon</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <p class="control-label col-md-2">ชื่อคูปอง</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.C_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.C_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <p class="control-label col-md-2">ชื่อร้านที่ใช้ได้</p>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.C_Store, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.C_Store, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Expire, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Expire, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Expire, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Des, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Des, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Des, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Url, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+*@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Create Promotion</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Create Promotion</h1>
+                                </div>
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                <form class="user">
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2">ชื่อโปรโมชั่น</p>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.C_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.C_Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2">ชื่อร้านที่ใช้ได้</p>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.C_Store, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.C_Store, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2">วันหมดอายุโปโมโชั่น</p>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Expire, new { htmlAttributes = new { @class = "form-control", placeholder = "10/02/65 - 28/02/65" } })
+                                        @Html.ValidationMessageFor(model => model.Expire, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="control-label col-md-2">โปรโมชั่นเดือนนี้</p>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Des, new { htmlAttributes = new { @class = "form-control", placeholder = "February" } })
+                                        @Html.ValidationMessageFor(model => model.Des, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                @*<div class="form-group">
+                                    <p class="control-label col-md-2">ชื่อคูปอง</p>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                *@
+
+
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-outline-dark mt-auto " />
+                                    &nbsp;
+                                    @Html.ActionLink("Back to List", "Index", "Coupons", null, new { @class = "btn btn-outline-dark mt-auto " })
+                                </div>
+
+                               
+
+                            </form>
+                                }
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

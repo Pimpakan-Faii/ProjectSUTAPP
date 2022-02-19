@@ -1,0 +1,194 @@
+﻿@model IEnumerable<Project.Safe>
+@using Microsoft.AspNet.Identity
+@*@{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Safe_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Safe_img)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Safe_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Safe_img)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Safe_id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Safe_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Safe_id })
+            </td>
+        </tr>
+    }
+
+    </table>
+*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop Homepage - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="@Url.Content("~/Content/StyleSafe.css")" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <b><a class="navbar-brand" href="@Url.Action("Index", "Home")">SUT IN SIDE</a></b>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+                    @*<li class="nav-item"><a class="nav-link active" href="#!">About</a></li>*@
+
+                    <!--<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">All Products</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        </ul>
+                    </li>-->
+
+                </ul>
+
+                <form class="d-flex">
+                    @Html.ActionLink("เพิ่มร้านปลอดภัย", "Create", null, new { @class = "btn btn-success" })
+                    <!--<button class="btn btn-outline-dark" type="submit">-->
+                    <!--<i class="bi-cart-fill me-1"></i>-->
+                    <!--<span class="badge bg-dark text-white ms-1 rounded-pill">0</span>-->
+                    <!--</button>-->
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header-->
+    <br />
+    <header class="bg-dark-edit py-5">
+
+        <div class="container px-4 px-lg-5 my-5">
+            <!--<div class="text-center text-black">-->
+            @if (Request.IsAuthenticated)
+            {
+                <p><span class="display-4 fw-bolder">สวัสดีคุณ @User.Identity.GetUserName()</span></p>
+                <!--<p><span class="lead fw-normal text-black-50 mb-0">คะแนนสะสมของคุณ : 0 point</span></p>-->
+            }
+            else
+            {
+                <p><span class="display-4 fw-bolder">สวัสดี ยินดีต้อนรับ</span></p>
+            }
+
+
+
+        </div>
+        <!--</div>-->
+
+    </header>
+
+    <div class="container">
+
+        <br />
+        <p><span style="color: white" class="display-6 fw-bolder">ร้านนี้ปลอดภัย</span></p>
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+        </div>
+        <br />
+
+        <div class="row">
+
+            @foreach(Safe data in Model) 
+            {
+            <div class="col-lg-4">
+                <div class="card card-margin">
+
+                    <!--<div class="card-header no-border">
+                        <h5 class="card-title">Class Cafe</h5>
+                    </div>-->
+
+                    <div class="card-body pt-0">
+                        <div class="widget-49">
+
+                            <div class="widget-49-title-wrapper">
+                                <div class="widget-49-date-success">
+                                    <!--<span class="widget-49-date-day">09</span>
+                                        <span class="widget-49-date-month">apr</span>-->
+                                    <img src="~/Content/images/image 46.png" style="height: 50px; width: 50px;">
+                                </div>
+
+                                <div class="widget-49-meeting-info">
+                                    <br />
+                                    <span class="widget-49-meeting-item"><b class="card-title">@data.Safe_name</b></span>
+                                    <br />
+                                    <span class="widget-49-meeting-time">ได้รับการยืนยันเข้ารับ Vaccine เรียบร้อยแล้ว</span>
+                                    <span class="widget-49-meeting-time">ทั้งเจ้าของร้าน และ พนักงาน</span>
+
+                                    <br />
+
+                                    <div class="pt-0 border-top-0 bg-transparent">
+                                        <div class="text-center">
+                                            @*<a class="btn btn-outline-dark mt-auto" href="@Url.Action("Index", "Details")">ดูเพิ่มเติม</a>*@
+                                            @Html.ActionLink("Details", "Details", new { id = data.Safe_id }, new { @class = "btn btn-outline-dark mt-auto" })
+                                            @Html.ActionLink("Edit", "Edit", new { id = data.Safe_id }, new { @class = "btn btn-warning" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = data.Safe_id }, new { @class = "btn btn-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!--<ol class="widget-49-meeting-points">
+                                <li class="widget-49-meeting-item"><span>Data migration is in scope</span></li>
+                                <li class="widget-49-meeting-item"><span>Session timeout increase to 30 minutes</span></li>
+                            </ol>
+
+                            <div class="widget-49-meeting-action">
+                                <a href="#" class="btn btn-sm btn-flash-border-primary">View All</a>
+                            </div>-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>

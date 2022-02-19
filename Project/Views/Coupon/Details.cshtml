@@ -1,0 +1,58 @@
+﻿@model Project.Coupon
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Coupon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.C_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C_Store)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_Store)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Expire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Expire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Des)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Des)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Coupon_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

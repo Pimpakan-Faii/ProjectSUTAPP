@@ -1,0 +1,183 @@
+﻿@using Project.Models
+@using Microsoft.AspNet.Identity
+@model dynamic
+
+@{
+    ViewBag.Title = "SUT IN SIDE";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="@Url.Content("~/Content/Style1.css")" rel="stylesheet" type="text/css" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <b><a class="navbar-brand" href="@Url.Action("Index", "Home")">SUT IN SIDE</a></b>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Coupon")">โปรโมชั่น</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Safe")">ร้านนี้ปลอดภัยชัวร์</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Popular")">ร้านอาหารยอดนิยม</a></li>
+
+                    <!--<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">All Products</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        </ul>
+                    </li>-->
+
+                </ul>
+
+                <div class="d-flex">
+                    @Html.Partial("_LoginPartialEdit")
+                    <!--<button class="btn btn-outline-dark" type="submit">-->
+                    <!--<i class="bi-cart-fill me-1"></i>-->
+                    <!--<span class="badge bg-dark text-white ms-1 rounded-pill">0</span>-->
+                    <!--</button>-->
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header-->
+    <br />
+    <header class="bg-dark-edit py-5">
+
+        <div class="container px-4 px-lg-5 my-5">
+            <!--<div class="text-center text-black">-->
+            @if (Request.IsAuthenticated)
+            {
+                <p><span class="display-4 fw-bolder">สวัสดีคุณ @User.Identity.GetUserName()</span></p>
+                <!--<p><span class="lead fw-normal text-black-50 mb-0">คะแนนสะสมของคุณ : 0 point</span></p>-->
+            }
+            else
+            {
+                <p><span class="display-4 fw-bolder">สวัสดี ยินดีต้อนรับ</span></p>
+            }
+
+            @*<div class="example">
+                @using ((Html.BeginForm()))
+                {
+                    @Html.TextBox("searchString", null, new { @placeholder = "ค้นหามื้ออาหารอร่อย ตรงนี้ !" })
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                }
+
+            </div>*@
+
+            <!-- Search -->
+            <div class="form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                {
+                    <div class="input-group">
+                        @Html.TextBox("searchString", null, new { @class = "form-control bg-light border-0 small", @placeholder = "ค้นหามื้ออาหารอร่อย ตรงนี้ !" })
+                        <div class="input-group-append">
+                            <button class="btn btn-danger" type="submit">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+        </div>
+        <!--</div>-->
+
+    </header>
+
+    <!--<div class="container">
+        <div class="row">
+            <div class="col text-right">
+                @*Html.ActionLink("เพิ่มร้านค้า", "Create", null, new { @class = "btn btn-success" })*@
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="container">
+        <div class="row">
+            <div class="div-edit text-black-50-edit">
+                @*@using ((Html.BeginForm()))
+                {
+                    @Html.TextBox("searchString", null, new { @placeholder = "ค้นหาชื่อร้านค้า" })
+                    <input type="submit" class="btn btn-info" value="Search" />
+                }*@
+            </div>
+        </div>
+    </div>-->
+    <!-- Section-->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+
+            @*แนะนำร้านอาหารเกิดใหม่*@
+            <p><span style="color: white" class="display-6 fw-bolder">แนะนำร้านอาหารเกิดใหม่</span></p>
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+            </div>
+
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                @foreach (Store st in Model.storelist)
+                {
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" src="@Url.Content("~/Content/images/" + (st.url))" alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">@st.name</h5>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        @for (var s = 1; s <= @st.Review; s++)
+                                        {
+                                            <div class="bi-star-fill"></div>
+                                        }
+                                    </div>
+                                    <!-- time -->
+                                    @st.time
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                    @Html.ActionLink("ดูเพิ่มเติม", "Select_Store", "Home", new { id = @st.product_id }, new { @class = "btn btn-outline-dark mt-auto" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/Content/Store/js/scripts.js"></script>
+
+</body>
+</html>

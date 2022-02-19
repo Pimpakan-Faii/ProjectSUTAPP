@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+<form class="flex">
+    @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+    @*<a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>*@
+
+    @Html.ActionLink("เปลี่ยนรหัสผ่าน", "ChangePassword", "Manage", null, new { @class = "btn btn-outline-dark mt-auto" })
+    &nbsp;
+    @Html.ActionLink("ออกจากระบบ", null, null, new { href = "javascript:document.getElementById('logoutForm').submit()", @class = "btn btn-outline-dark mt-auto" })
+
+</form>
+
+    }
+}
+
+else
+{
+<form class="flex">
+        @Html.ActionLink("เข้าสู่ระบบ", "Login", "Account", null, new { @class = "btn btn-outline-dark mt-auto" })
+        &nbsp;
+        @Html.ActionLink("สมัคร", "Register", "Account", null, new { @class = "btn btn-outline-dark mt-auto" })
+</form>
+}

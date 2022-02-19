@@ -1,0 +1,169 @@
+﻿@model IEnumerable<Project.Store>
+@using Microsoft.AspNet.Identity
+@*@{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review)
+            </th>
+            <th></th>
+        </tr>
+
+        <!-- @foreach (var item in Model) { -->
+        @for (var i = 1; i <= 3; i++)
+        {
+            var indexItem = i - 1;
+            <tr>
+                <td>
+                    @Model.ElementAt(indexItem).url
+                </td>
+
+                <td>
+                    @Model.ElementAt(indexItem).Review
+                </td>
+
+            </tr>
+        }
+
+        </table>
+*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop Homepage - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="@Url.Content("~/Content/StylePop.css")" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <b><a class="navbar-brand" href="@Url.Action("Index", "Home")">SUT IN SIDE</a></b>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <!-- Menu Navigation -->
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Coupon")">โปรโมชั่น</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Safe")">ร้านนี้ปลอดภัยชัวร์</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="@Url.Action("Index", "Popular")">ร้านอาหารยอดนิยม</a></li>
+
+                </ul>
+
+                <div class="d-flex">
+                    <!-- Menu right -->
+                    @Html.Partial("_LoginPartialEdit")
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header-->
+    <br />
+    <header class="bg-dark-edit py-5">
+
+        <div class="container px-4 px-lg-5 my-5">
+            <!--<div class="text-center text-black">-->
+            @if (Request.IsAuthenticated)
+            {
+                <p><span class="display-4 fw-bolder">สวัสดีคุณ @User.Identity.GetUserName()</span></p>
+                <!--<p><span class="lead fw-normal text-black-50 mb-0">คะแนนสะสมของคุณ : 0 point</span></p>-->
+            }
+            else
+            {
+                <p><span class="display-4 fw-bolder">สวัสดี ยินดีต้อนรับ</span></p>
+            }
+
+            <!-- Search -->
+            
+
+
+        </div>
+        <!--</div>-->
+
+    </header>
+
+    <div class="container">
+
+        <br />
+        <p><span style="color: white" class="display-6 fw-bolder">ร้านอาหารยอดนิยม 3 อันดับ</span></p>
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+        </div>
+        <br />
+
+        <div class="row">
+            @for (var i = 1; i <= 3; i++)
+            {
+                var indexItem = i - 1;
+
+                <div class="col-md-4">
+                    <div class="card user-card">
+                        <div class="card-header">
+                            @*<h5>Profile</h5>*@
+                        </div>
+                        <div class="card-block">
+
+                            <div class="user-image">
+                                <img src="@Url.Content("~/Content/images/" + (Model.ElementAt(indexItem).url))" class="img-radius" alt="User-Profile-Image">
+                            </div>
+
+                            <h6 class="f-w-600 m-t-25 m-b-10">@Model.ElementAt(indexItem).name</h6>
+                            <p class="text-muted">Active | @Model.ElementAt(indexItem).time</p>
+                            <hr>
+
+                            <p class="text-muted m-t-15">Rating Stars</p>
+
+                            <div class="d-flex justify-content-center small text-warning mb-2">
+                                @for (var s = 1; s <= Model.ElementAt(indexItem).Review; s++)
+                                {
+                                    <div class="bi-star-fill"></div>
+                                }
+                            </div>
+
+                            @Html.ActionLink("ดูเพิ่มเติม", "Select_Store", "Home", new { id = Model.ElementAt(indexItem).product_id }, new { @class = "btn btn-outline-dark mt-auto" })
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+            </div>
+    </div>
+
+
+</body>
+</html>

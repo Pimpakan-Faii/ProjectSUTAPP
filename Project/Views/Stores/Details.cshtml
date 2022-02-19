@@ -1,0 +1,142 @@
+﻿@model Project.Store
+
+@*@{
+        ViewBag.Title = "Details";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
+
+    <div>
+        <h2>Details Store</h2>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <!--@Html.DisplayNameFor(model => model.url)-->
+                รูปภาพ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.url)
+            </dd>
+
+            <dt>
+                ชื่อร้าน
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+
+            <dt>
+                เวลา เปิด-ปิด
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.time)
+            </dd>
+
+            <dt>
+                จำนวนดาวร้าน
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Review)
+            </dd>
+
+        </dl>
+    </div>
+
+    <!--<div>
+        @Html.ActionLink("Edit", "Edit", "", null, new { id = Model.product_id, @class = "btn btn-outline-dark mt-auto" })
+        &nbsp;
+        @Html.ActionLink("Back to List", "Index", null, null, new { @class = "btn btn-outline-dark mt-auto" })
+
+    </div>
+    -->
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.product_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+*@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Details Store</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Details Store</h1>
+                                </div>
+
+                                <form class="user">
+
+                                    <div class="form-group">
+                                        <p class="control-label col-md-2">ชื่อรูปภาพ</p>
+                                        <div class="col-md-10">
+                                            <b>@Html.DisplayFor(model => model.url)</b>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <p class="control-label col-md-2">ชื่อร้าน</p>
+                                        <div class="col-md-10">
+                                            <b>@Html.DisplayFor(model => model.name)</b>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <p class="control-label col-md-2">เวลา เปิด-ปิด</p>
+                                        <div class="col-md-10">
+                                            <b>@Html.DisplayFor(model => model.time)</b>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <p class="control-label col-md-2">จำนวนดาวร้าน</p>
+                                        <div class="col-md-10">
+                                            <b>@Html.DisplayFor(model => model.Review)</b>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="form-actions no-color">
+                                        @Html.ActionLink("Edit", "Edit", new { id = Model.product_id }, new { @class = "btn btn-outline-dark mt-auto " })
+                                        &nbsp;
+                                        @Html.ActionLink("Back to List", "Index", "Stores", null, new { @class = "btn btn-outline-dark mt-auto " })
+                                    </div>
+                                }
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
